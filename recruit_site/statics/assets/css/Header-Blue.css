@@ -221,7 +221,7 @@
   border-color: rgba(255,255,255);
   border-radius: 15px;
   background-color: transparent;
-  transition: 0.3s;
+  transition-delay: 0.5s;
 }
 
 #custom_btn:hover {
