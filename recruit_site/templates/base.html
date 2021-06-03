@@ -32,7 +32,16 @@
                     </ul>
                     <form class="form-inline mr-auto" target="_self">
                         <div class="form-group mb-0"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
-                    </form><span class="navbar-text"> <a class="login" href="#">Log In</a></span><a class="btn btn-light action-button" role="button" href="#">Sign Up</a>
+                    </form>
+                    {% if not user.is_authenticated %}
+                    <span class="navbar-text"> <a class="login" href="login">Log In</a></span><a class="btn btn-light action-button" role="button" href="register">Sign Up</a>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                     <span class="navbar-text"> <a class="login" href="logout">Log out</a></span>
+                    <a class="btn btn-light action-button" role="button" href="#">Hello, {{user.first_name}}</a>
+
+                    {% endif %}
                 </div>
             </div>
         </nav>
