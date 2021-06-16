@@ -1,4 +1,5 @@
 {% load static %}
+{% static 'images' as baseUrl %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +18,13 @@
     <link rel="stylesheet" href="{% static 'assets/css/MUSA_carousel-product-cart-slider.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/untitled.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/Profile-Card.css' %}">
 </head>
 
 <body>
     <header class="header-blue" style="background: rgb(24, 78, 142);">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-            <div class="container-fluid"><a class="navbar-brand" href="#">Company Name</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" href="/">Company Name</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
@@ -39,7 +41,7 @@
 
                     {% if user.is_authenticated %}
                      <span class="navbar-text"> <a class="login" href="logout">Log out</a></span>
-                    <a class="btn btn-light action-button" role="button" href="#">Hello, {{user.first_name}}</a>
+                    <a class="btn btn-light action-button" role="button" href="profile">Hello, {{user.first_name}}</a>
 
                     {% endif %}
                 </div>
@@ -54,6 +56,9 @@
     {% endblock %}
 
     {% block top_projects %}
+    {% endblock %}
+
+    {% block profile_info %}
     {% endblock %}
 
     <footer class="footer-dark">
