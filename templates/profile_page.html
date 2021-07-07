@@ -1,59 +1,44 @@
 {% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Recruit_home</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
-    <link rel="stylesheet" href="assets/css/Header-Blue.css">
-    <link rel="stylesheet" href="assets/css/login-full-page-bs4.css">
-    <link rel="stylesheet" href="assets/css/MUSA_carousel-product-cart-slider-1.css">
-    <link rel="stylesheet" href="assets/css/MUSA_carousel-product-cart-slider.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
-    <link rel="stylesheet" href="assets/css/Profile-Card.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
-</head>
-
-<body>
+    
     {% block profile_info %}
     <div class="container profile-info">
         <div class="text-center profile-card" style="margin: 15px;background-color: #fafafa;box-shadow: 0 0 3px #b3b3b3;">
-            <div class="profile-card-img" style="background-image:url(&quot;iceland.jpg&quot;);height:150px;background-size:cover;"></div>
-            <div><img class="rounded-circle" style="margin-top:-70px;" src="images/assets/img/avatar-dhg.png" height="150px">
-                <h3>Joseph Mancuso</h3>
-                <p style="padding: 20px;padding-bottom: 0;padding-top: 5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque.</p>
+            <div class="profile-card-img" style="height:150px;background-size:cover;">
+                <a href="edit">
+                <button class="btn btn-link border-pretty" style="color: #ce9c95;float: right;border-color: rgb(24, 78, 142);color: rgb(24, 78, 142);margin: 10px;" type="button"><span>Edit&nbsp;</span><i class="icon ion-android-arrow-forward"></i></button>
+                </a>
+            </div>
+            <div><img class="rounded-circle" style="margin-top:-70px;" src=" {{user.profilepic.profile_pic.url}}" height="150px" width="150px">
+            <a href="edit_pic">
+            <button class="btn btn-link border-pretty" style="color: #ce9c95;/*float: right;*/border-color: rgb(24, 78, 142);color: rgb(24, 78, 142);/*margin: 0px;*/" type="button"><span>+</span></button>
+            </a>
+                <h3>{{user.first_name}} {{user.last_name}}</h3>
+                <p style="padding: 20px;padding-bottom: 0;padding-top: 5px;">{{user.profile.desc}}</p>
             </div>
             <div class="row" style="padding:0;padding-bottom:10px;padding-top:20px;">
                 <div class="col-md-6" style="padding: 0 50px;">
-                    <p class="text-right" style="text-align: left!important;"><strong>Title</strong></p>
-                    <p class="text-nowrap text-right" style="text-align: left!important;">Email</p>
+                    <p class="text-right" style="text-align: right!important;"><strong>{{user.profile.designation}}</strong></p>
+                    <p class="text-nowrap text-right" style="text-align: right!important;">{{user.email}}</p>
                 </div>
                 <div class="col-md-6" style="padding: 0 50px;">
-                    <p class="text-left">Location</p>
-                    <p class="text-left">Location</p>
+                    <p class="text-left">{{user.profile.addr}}</p>
+                    <p class="text-left">{{user.profile.link}}</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
+
+        <a href="edit_about">
+        <button class="btn btn-link border-pretty" style="color: #ce9c95;float: right;border-color: rgb(24, 78, 142);color: rgb(24, 78, 142);margin: 10px;margin-right: 27px;" type="button"><span>Edit&nbsp;</span><i class="icon ion-android-arrow-forward"></i></button>
+        </a>
+
         <div style="margin: 15px;padding: 0 20px;background-color: #fafafa;box-shadow: 0 0 3px #b3b3b3;">
             <h3 class="text-center">About</h3>
-            <p><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec efficitur quam. Curabitur lacinia in lectus ut pharetra. Aenean in turpis ultricies, congue lacus ac, posuere mauris. Maecenas efficitur sodales lectus, nec commodo justo hendrerit vel. In id molestie libero. Vivamus nec dictum justo, sit amet vulputate risus. Fusce auctor quis felis aliquet dictum. Nam venenatis faucibus orci, quis elementum massa gravida sit amet. Maecenas sed imperdiet est, at tempus nulla. Proin elementum est eros, vel aliquet enim fringilla cursus. Nam iaculis leo urna, eu ullamcorper nisl ultricies eu. Donec vitae nunc bibendum nisi vehicula dictum. Quisque quis vulputate tortor.Mauris viverra sem ullamcorper massa vehicula, a bibendum dui egestas. Sed ut ipsum nec nulla egestas vehicula. Praesent pulvinar, leo eu convallis dignissim, massa velit efficitur leo, vitae suscipit mi eros at neque. Suspendisse sed dui augue. Praesent nec lorem a nisi ornare pulvinar sed eu arcu. Pellentesque imperdiet rhoncus facilisis. Cras vel libero lacus. Nullam gravida elementum velit at vehicula. Cras imperdiet tellus neque, viverra faucibus lorem maximus id.<br><br></p>
+            <p><br><br>{{user.profileabout.about}}<br><br></p>
         </div>
     </div>
     {% endblock %}
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/login-full-page-bs4.js"></script>
-    <script src="assets/js/login-full-page-bs4-1.js"></script>
-</body>
-
-</html>
+   

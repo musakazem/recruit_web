@@ -22,7 +22,7 @@ def register(request):
 				print("Username already taken")
 				messages.info(request, "Username already taken")
 				return redirect('register')
-
+				
 			elif(User.objects.filter(email = email).exists()):
 				
 				print("Email already taken")
