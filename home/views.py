@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, AboutForm, ImageForm
+from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm
 from django.contrib import messages
 from .models import Profile
 
@@ -97,3 +97,25 @@ def edit_pic(request):
 
 		context = {"form": form}
 		return render(request, "edit_pic.html", context)
+
+
+def  job_post(request):
+
+	form = JobPostForm()
+
+	if request.method == "POST":
+		form = JobPostForm(request.POST, request.FILES)
+		print("*************" + str(form))
+
+		if form.is_valid():
+			obj = form.save(commit = False)
+			obj.user = request.user
+			obj.save()
+
+			print("**********post uploaded")
+
+			return redirect("profile")
+	
+	else:	
+		context = {"form": form}
+		return render(request, "jobpost_form.html", context)

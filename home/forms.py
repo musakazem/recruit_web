@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Profile, ProfileAbout, ProfilePic
+from .models import Profile, ProfileAbout, ProfilePic, JobPost
 
 
 
@@ -17,3 +17,8 @@ class ImageForm(ModelForm):
 	class Meta:
 		model = ProfilePic
 		fields = ['profile_pic']
+
+class JobPostForm(ModelForm):
+	class Meta:
+		model = JobPost
+		fields = ['position','institution','location','pay','desc','img','employment_type']

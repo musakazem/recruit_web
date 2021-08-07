@@ -23,3 +23,28 @@ class ProfilePic(models.Model):
 	user = models.OneToOneField(User, null = False, on_delete = models.CASCADE, primary_key = True)
 
 	profile_pic = models.ImageField(upload_to = 'pics/', default = "")
+
+class JobPost(models.Model):
+	position = models.CharField(max_length = 100)
+	institution = models.CharField(max_length = 100)
+
+	employment_choice = (
+
+			("full-time" , "Full-time"),
+			("part-time" , "Part-time"),
+			("contract" , "Contract"),
+			("temporary" , "Temporary"),
+			("volunteer" , "Volunteer"),
+			("internship" , "Internship"),
+
+		)
+
+	
+	employment_type = models.CharField(max_length = 50, blank = True, choices = employment_choice)
+	location = models.CharField(max_length = 50)
+	pay = models.IntegerField()
+	img = models.ImageField(upload_to = 'pics/', null = True)
+	user = models.ForeignKey(User, default = 1, null = True, on_delete = models.SET_NULL)
+	desc = models.TextField(blank = True, max_length = 500)
+
+
