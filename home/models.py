@@ -43,8 +43,8 @@ class JobPost(models.Model):
 	employment_type = models.CharField(max_length = 50, blank = True, choices = employment_choice)
 	location = models.CharField(max_length = 50)
 	pay = models.IntegerField()
-	img = models.ImageField(upload_to = 'pics/', null = True)
+	img = models.ImageField(upload_to = 'pics/', blank = True)
 	user = models.ForeignKey(User, default = 1, null = True, on_delete = models.SET_NULL)
 	desc = models.TextField(blank = True, max_length = 500)
-
+	date = models.DateTimeField(auto_now_add = True, null = True)
 

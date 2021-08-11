@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Recruit_home</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Cards-v2.css">
+    <link rel="stylesheet" href="assets/css/Button-Outlines---Pretty.css">
+   
+    
+  
+   
+    
+    
+  
+    <link rel="stylesheet" href="assets/css/project-card.css">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+{% extends 'base.html' %}
+
+<body>
+
+{% block joblist %}
+
+{% load humanize %}
+   
+    <div class="container" style="margin: 20px auto;">
+        <div class="row">
+            <div class="col"><div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div></div>
+            <div class="col"><div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div></div>
+            <div class="col"><div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div></div>
+        </div>
+            
+           
+            <div class="container">
+            {% for job in jobs %}
+                {% if forloop.first %}<div class="row">{% endif %}
+                <div class = "col-md-3">
+                    <div class="card border-white border rounded shadow-lg" style="width: 230px;height: 340px;margin: 10px;margin-left: 8px;margin-right: 8px;">
+                        <div class="card-body" style="width: 205px;height: 365px;padding: 0px;margin: 10px;"><img src = "{{job.img.url}}" class="d-lg-flex m-auto align-items-lg-center" style="width: 205px;height: 115.31px;margin-left: 0px;padding-left: 0px;">
+                            <h4 class="card-title" style="margin-top: 5px;font-size: 18px;">{{job.position}}</h4><span style="float: right;color: #6c757d!important;font-size: 12px;">{{job.date|naturaltime|capfirst}}</span>
+                            <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;font-size: 15px;">{{job.institution}}</h6>
+                            <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;font-size: 13px;">{{job.location}}</h6>
+                            <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;font-size: 12px;">{{job.employment_type}}</h6>
+                            <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;font-size: 12px;">${{job.pay}} (Employer est.)</h6>
+                            <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="background-color: #21a9af;border-color: rgb(255, 255, 255);/*border-top-color: rgb(255,;*//*border-right-color: 255,;*//*border-bottom-color: 255);*//*border-left-color: 255,;*/">Apply Now</button></div>
+                        </div>
+                    </div>
+                </div>
+                 {% if forloop.counter|divisibleby:4 %}</div><div class="row">{% endif %}
+                 {% if forloop.last %}</div>{% endif %}
+             {% endfor %}
+            </div>
+            
+    </div>
+{% endblock %}
+</body>
+
+</html>

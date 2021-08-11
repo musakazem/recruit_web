@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, JobPost
 
 
 # Create your views here.
@@ -119,3 +119,13 @@ def  job_post(request):
 	else:	
 		context = {"form": form}
 		return render(request, "jobpost_form.html", context)
+
+def joblist(request):
+
+	jobs = JobPost.objects.all()
+	timestamps = JobPost.objects.values_list('date')
+	print("*******************", timestamps)
+	print("*******************", jobs)
+	context = {"jobs": jobs, "timestamps":timestamps}
+
+	return render(request, 'joblist_page.html', context)
