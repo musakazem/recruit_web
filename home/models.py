@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -45,6 +46,6 @@ class JobPost(models.Model):
 	pay = models.IntegerField()
 	img = models.ImageField(upload_to = 'pics/', blank = True)
 	user = models.ForeignKey(User, default = 1, null = True, on_delete = models.SET_NULL)
-	desc = models.TextField(blank = True, max_length = 500)
+	desc = RichTextField(null = True, blank = True, max_length = 1000)
 	date = models.DateTimeField(auto_now_add = True, null = True)
 

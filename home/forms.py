@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import Profile, ProfileAbout, ProfilePic, JobPost
-
+from ckeditor.fields import RichTextField
 
 
 class ProfileForm(ModelForm):
@@ -19,6 +19,8 @@ class ImageForm(ModelForm):
 		fields = ['profile_pic']
 
 class JobPostForm(ModelForm):
+
+
 	class Meta:
 		model = JobPost
 		fields = ['position','institution','location','pay','desc','img','employment_type']

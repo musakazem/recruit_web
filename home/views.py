@@ -109,7 +109,7 @@ def  job_post(request):
 
 		if form.is_valid():
 			obj = form.save(commit = False)
-			obj.user = request.user
+			obj.user = request.user.id
 			obj.save()
 
 			print("**********post uploaded")
@@ -129,3 +129,11 @@ def joblist(request):
 	context = {"jobs": jobs, "timestamps":timestamps}
 
 	return render(request, 'joblist_page.html', context)
+
+def jobinfo(request, jobpost_id):
+
+	content  = JobPost.objects.get(id = jobpost_id)
+
+	context = {"content":content}
+
+	return render(request, 'jobinfo_page.html', context)

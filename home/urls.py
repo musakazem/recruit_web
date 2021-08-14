@@ -10,5 +10,6 @@ urlpatterns = [
 	path('edit_pic', views.edit_pic, name = 'edit_pic'),
 	path('job_post', views.job_post, name = 'job_post'),
 	path('joblist', views.joblist, name = 'joblist'),
+	path('joblist/<str:jobpost_id>/', views.jobinfo, name = 'jobinfo'),
 	
 ]
