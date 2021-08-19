@@ -49,3 +49,16 @@ class JobPost(models.Model):
 	desc = RichTextField(null = True, blank = True, max_length = 1000)
 	date = models.DateTimeField(auto_now_add = True, null = True)
 
+
+class Question(models.Model):
+
+	question = RichTextField(null = True, blank = True)
+
+	jobpost = models.ForeignKey(
+		JobPost, 
+		blank = True, 
+		null = True, 
+		on_delete = models.SET_NULL)
+
+	date = models.DateTimeField(auto_now_add = True, null = True)
+

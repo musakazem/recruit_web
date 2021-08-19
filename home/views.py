@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm
+from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm, QuestionForm
 from django.contrib import messages
 from .models import Profile, JobPost
 
@@ -109,16 +109,39 @@ def  job_post(request):
 
 		if form.is_valid():
 			obj = form.save(commit = False)
-			obj.user = request.user.id
+			obj.user_id = request.user.id
 			obj.save()
 
 			print("**********post uploaded")
 
-			return redirect("profile")
+
+
+			return redirect("job_post/q_post")
 	
 	else:	
 		context = {"form": form}
 		return render(request, "jobpost_form.html", context)
+
+def q_post(request):
+
+	form = QuestionForm()
+	if request.method == "POST":
+		form = QuestionForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			obj = form.save(commit = False)
+			jobpost_obj = JobPost.objects.latest("id")
+			obj.jobpost_id = jobpost_obj.id
+			obj.save()
+
+			
+			addr1 = str(jobpost_obj.id)
+			addr2 = "joblist/"
+			addr = addr2 + addr1
+			return redirect(addr)
+
+	context = {"form": form}
+	return render(request, 'qpost_form.html',context)
 
 def joblist(request):
 
@@ -137,3 +160,7 @@ def jobinfo(request, jobpost_id):
 	context = {"content":content}
 
 	return render(request, 'jobinfo_page.html', context)
+
+
+
+

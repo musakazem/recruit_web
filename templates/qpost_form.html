@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Recruit_home</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Roboto' %}">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+   
+    
+</head>
+
+<body>
+    <div class="container" style="margin-top: 5%;">
+        <div style="box-shadow: 0 0 16px rgba(81, 203, 238, 1);padding: 10px;">
+            <p style="width: inherit;">You can ask specific questions for the applicant to answer in this field. These questions will appear&nbsp; to applicants when they apply for the job. This step can be useful to employers as it helps them vet for more suitable candidates.</p>
+            <form method="post", action="q_post", enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">{{form.media}}{{form.question}}</div>
+                <div class="form-group"><button class="btn btn-primary btn btn-light btn-lg" type="submit" style="font-family: Roboto, sans-serif;margin-left: 16px;">Submit</button></div>
+            </form>
+        </div>
+    </div>
+   
+</body>
+
+</html>
