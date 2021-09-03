@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Recruit_home</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Roboto' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/apost_form.css' %}">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div id="main-container" style="box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;padding: 10px;">
+            <div id="text-container">
+                {{q_obj.question|safe}}
+            </div>
+            <div class="container" style="margin:40px">
+                <form method="post" action="a_post" enctype="multipart/form-data" id = "answer_form">
+                    {% csrf_token %}
+                    <div name = "answer"> {{form.media}}{{form.answer}}</div>
+                   
+                    <button name = "question_id" form="answer_form" value="{{q_obj.id}}" class="btn btn-primary btn-light btn-lg" type="submit">submit</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+</html>

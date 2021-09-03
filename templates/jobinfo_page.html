@@ -3,11 +3,20 @@
 {% load humanize %}
     <div class="container">
         <div style="max-width: 1080px;background-color: #FFFFFF;margin: 20px auto;padding: 20px;box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important">
-            <h1 style="font-size: 1.75rem;">{{content.position}}</h1><span>{{content.location}}</span><br>
-            <span>{{content.employment_type}}</span><br>
-            <span style="float: right;">{{content.date|naturaltime}}</span><span>${{content.pay}}</span>
-            <hr>
-            <br>{{content.desc|safe}}<br><br>
+        	<div class="row">
+        		<div class="col-md-6" id="span1">
+		            <h1 style="font-size: 1.75rem;">{{content.position}}</h1><span style="float: left;">{{content.location}}</span><br>
+		            <span style="float: left;">{{content.employment_type}}</span><br>
+		            <span style="float: left;">${{content.pay}}</span>
+		        </div>
+		        <div class="col-md-6">
+		        	<button onclick="window.location.href = '/a_post/{{content.id}}'" class="btn btn-primary" type="button">apply</button><br><br>
+		        	<span style="float: right;">{{content.date|naturaltime}}</span>
+		        </div>
+		    <hr>
+		    <br>{{content.desc|safe}}<br><br>
+        	</div>
+        	
         </div>
     </div>
 {% endblock %}

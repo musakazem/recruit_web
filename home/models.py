@@ -54,7 +54,7 @@ class Question(models.Model):
 
 	question = RichTextField(null = True, blank = True)
 
-	jobpost = models.ForeignKey(
+	jobpost = models.OneToOneField(
 		JobPost, 
 		blank = True, 
 		null = True, 
@@ -62,3 +62,22 @@ class Question(models.Model):
 
 	date = models.DateTimeField(auto_now_add = True, null = True)
 
+
+class Answer(models.Model):
+
+	answer = RichTextField(null = True, blank = True)
+
+	question = models.ForeignKey(
+		Question,
+		blank = True,
+		null = True,
+		on_delete = models.CASCADE
+		)
+
+	user = models.ForeignKey(
+		User,
+		null = True,
+		blank = True,
+		on_delete = models.CASCADE
+		)
+	date = models.DateTimeField(auto_now_add = True, null = True)

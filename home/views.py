@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm, QuestionForm
+from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm, QuestionForm, AnswerForm
 from django.contrib import messages
-from .models import Profile, JobPost
+from .models import Profile, JobPost, Question
 
 
 # Create your views here.
@@ -142,6 +142,46 @@ def q_post(request):
 
 	context = {"form": form}
 	return render(request, 'qpost_form.html',context)
+
+def a_post(request, job_id):
+
+	if request.method == "GET":
+
+		job_obj = JobPost.objects.get(id = job_id)
+		q_id = int(job_obj.id)
+		q_obj = Question.objects.get(jobpost_id = q_id)
+
+		
+		print("*****************" + str(q_id))
+		
+		form = AnswerForm()
+
+		context = {"q_obj":q_obj, "form":form}
+
+		return render(request, 'apost_form.html', context)
+
+		
+	if request.method == "POST":
+		form = AnswerForm(request.FILES, request.POST)
+		
+
+		
+		if form.is_valid():
+			
+			obj = form.save(commit = False)
+			q_id = request.POST.get("question_id",None)
+			ans_text = request.POST.get('answer', None)
+			print("*****************" + str(q_id))
+			print("*****************" + str(ans_text))
+		
+			obj.user_id = request.user.id
+			obj.question_id = q_id
+			obj.answer = ans_text
+			obj.save()
+
+			return redirect("/profile")
+
+	
 
 def joblist(request):
 

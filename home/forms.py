@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Profile, ProfileAbout, ProfilePic, JobPost, Question
+from .models import Profile, ProfileAbout, ProfilePic, JobPost, Question, Answer
 from ckeditor.fields import RichTextField
 
 
@@ -14,6 +14,7 @@ class AboutForm(ModelForm):
 		fields = ['about']
 
 class ImageForm(ModelForm):
+	
 	class Meta:
 		model = ProfilePic
 		fields = ['profile_pic']
@@ -30,3 +31,10 @@ class QuestionForm(ModelForm):
 	class Meta:
 		model = Question
 		fields = ['question']
+
+
+class AnswerForm(ModelForm):
+
+	class Meta:
+		model = Answer
+		fields = ['answer']

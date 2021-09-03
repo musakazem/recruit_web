@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/untitled.css'%}">
     <link rel="stylesheet" href="{% static 'assets/css/Profile-Card.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/project-card.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jobinfo_page.css' %}">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
 
                     {% if user.is_authenticated %}
                      <span class="navbar-text"> <a class="login" href="logout">Log out</a></span>
-                    <a class="btn btn-light action-button" role="button" href="profile">Hello, {{user.first_name}}</a>
+                    <a class="btn btn-light action-button" role="button" href="/profile">Hello, {{user.first_name}}</a>
 
                     {% endif %}
                 </div>
