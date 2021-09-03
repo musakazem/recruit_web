@@ -1,0 +1,12 @@
+.member-btn:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+.col {
+}
+
+#info-form {
+  box-shadow: 0 0 16px rgb(81,203,238);
+  padding: 10px;
+}
+

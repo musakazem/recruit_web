@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Recruit_home</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Roboto' %}">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Bootstrap-Cards-v2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Button-Outlines---Pretty.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Drag-Drop-File-Input-Upload.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Responsive-Form-1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Responsive-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <form method="post" action="job_post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div id="formdiv">
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Job title</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1"><!-- <input class="form-control" type="text" style="margin-left:0px;font-family:Roboto, sans-serif;" name="name" placeholder="Name"> -->{{form.position}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Company</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1">{{form.institution}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;margin-top:-16px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Employment type</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1"><!-- <select class="form-control" style="font-family:Roboto, sans-serif;" name="gender">
+                                    <optgroup label="Gender">
+                                        <option value="">Male</option>
+                                        <option value="">Female</option>
+                                    </optgroup>
+                                </select> -->{{form.employment_type}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Job location</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1">{{form.location}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Pay (Estimation)</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1">{{form.pay}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Job Description&nbsp;</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1"><!-- <textarea class="form-control" style="font-family: Roboto, sans-serif;font-size: 14px;height: 200px;" placeholder="Requirements and further details"></textarea> -->{{form.media}}{{form.desc}}</div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-md-8 offset-md-1">
+                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;">Upload Logo</p>
+                            </div>
+                            <div class="col-md-10 offset-md-1">
+                                <div class="form-group files color"><!-- <input class="form-control-file" type="file" multiple="" name="files"> -->{{form.img}}</div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                            <div class="col-12 col-md-4 offset-md-4"><button class="btn btn-light btn-lg" style="font-family:Roboto, sans-serif;" type="reset">Clear </button><button class="btn btn-light btn-lg" style="margin-left:16px;" type="submit">Submit </button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

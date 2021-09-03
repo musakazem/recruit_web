@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, AboutForm, ImageForm
+from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm, QuestionForm, AnswerForm
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, JobPost, Question
 
 
 # Create your views here.
@@ -97,3 +97,110 @@ def edit_pic(request):
 
 		context = {"form": form}
 		return render(request, "edit_pic.html", context)
+
+
+def  job_post(request):
+
+	form = JobPostForm()
+
+	if request.method == "POST":
+		form = JobPostForm(request.POST, request.FILES)
+		print("*************" + str(form))
+
+		if form.is_valid():
+			obj = form.save(commit = False)
+			obj.user_id = request.user.id
+			obj.save()
+
+			print("**********post uploaded")
+
+
+
+			return redirect("job_post/q_post")
+	
+	else:	
+		context = {"form": form}
+		return render(request, "jobpost_form.html", context)
+
+def q_post(request):
+
+	form = QuestionForm()
+	if request.method == "POST":
+		form = QuestionForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			obj = form.save(commit = False)
+			jobpost_obj = JobPost.objects.latest("id")
+			obj.jobpost_id = jobpost_obj.id
+			obj.save()
+
+			
+			addr1 = str(jobpost_obj.id)
+			addr2 = "joblist/"
+			addr = addr2 + addr1
+			return redirect(addr)
+
+	context = {"form": form}
+	return render(request, 'qpost_form.html',context)
+
+def a_post(request, job_id):
+
+	if request.method == "GET":
+
+		job_obj = JobPost.objects.get(id = job_id)
+		q_id = int(job_obj.id)
+		q_obj = Question.objects.get(jobpost_id = q_id)
+
+		
+		print("*****************" + str(q_id))
+		
+		form = AnswerForm()
+
+		context = {"q_obj":q_obj, "form":form}
+
+		return render(request, 'apost_form.html', context)
+
+		
+	if request.method == "POST":
+		form = AnswerForm(request.FILES, request.POST)
+		
+
+		
+		if form.is_valid():
+			
+			obj = form.save(commit = False)
+			q_id = request.POST.get("question_id",None)
+			ans_text = request.POST.get('answer', None)
+			print("*****************" + str(q_id))
+			print("*****************" + str(ans_text))
+		
+			obj.user_id = request.user.id
+			obj.question_id = q_id
+			obj.answer = ans_text
+			obj.save()
+
+			return redirect("/profile")
+
+	
+
+def joblist(request):
+
+	jobs = JobPost.objects.all()
+	timestamps = JobPost.objects.values_list('date')
+	print("*******************", timestamps)
+	print("*******************", jobs)
+	context = {"jobs": jobs, "timestamps":timestamps}
+
+	return render(request, 'joblist_page.html', context)
+
+def jobinfo(request, jobpost_id):
+
+	content  = JobPost.objects.get(id = jobpost_id)
+
+	context = {"content":content}
+
+	return render(request, 'jobinfo_page.html', context)
+
+
+
+
