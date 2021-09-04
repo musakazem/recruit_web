@@ -15,18 +15,18 @@ class Profile(models.Model):
 	
 class ProfileAbout(models.Model):
 
-	user = models.OneToOneField(User, null = False, on_delete = models.CASCADE, primary_key = True)
+	user = models.OneToOneField(User, blank = True,  null = False, on_delete = models.CASCADE, primary_key = True)
 
 	about = models.TextField(default = "")
 	
 class ProfilePic(models.Model):
 
-	user = models.OneToOneField(User, null = False, on_delete = models.CASCADE, primary_key = True)
+	user = models.OneToOneField(User, blank = True, null = False, on_delete = models.CASCADE, primary_key = True)
 
 	profile_pic = models.ImageField(upload_to = 'pics/', default = "")
 
 class JobPost(models.Model):
-	position = models.CharField(max_length = 100)
+	position = models.CharField(max_length = 150)
 	institution = models.CharField(max_length = 100)
 
 	employment_choice = (
@@ -60,7 +60,7 @@ class Question(models.Model):
 		null = True, 
 		on_delete = models.SET_NULL)
 
-	date = models.DateTimeField(auto_now_add = True, null = True)
+	date = models.DateTimeField(auto_now_add = True, null = True, blank = True)
 
 
 class Answer(models.Model):
@@ -80,4 +80,4 @@ class Answer(models.Model):
 		blank = True,
 		on_delete = models.CASCADE
 		)
-	date = models.DateTimeField(auto_now_add = True, null = True)
+	date = models.DateTimeField(auto_now_add = True, null = True, blank = True)
