@@ -9,7 +9,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, null = False, on_delete = models.CASCADE, primary_key = True)
 
 	desc = models.TextField()
-	designation = models.CharField(max_length = 100)
+	designation = models.CharField(max_length = 150)
 	addr = models.CharField(max_length = 100)
 	link = models.CharField(max_length=100)
 	
