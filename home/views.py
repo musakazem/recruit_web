@@ -214,6 +214,10 @@ def post_status(request, user_id):
 
 	return render(request, 'poststatus_page.html', context)
 
+###############################################################
+#####changes jobpost status to False. Deactivates jobpost.#####
+###############################################################
+
 def change_status_false(request, post_id):
 
 	jobposts = JobPost.objects.all()
@@ -232,7 +236,11 @@ def change_status_false(request, post_id):
 	addr2 = "profile/post_status/"
 	addr = addr2 + addr1
 	return redirect("/" + addr)
-	
+
+############################################################
+#####changes jobpost status to True. Activates jobpost.#####
+############################################################
+
 def change_status_true(request, post_id):
 
 	jobposts = JobPost.objects.all()
@@ -251,4 +259,24 @@ def change_status_true(request, post_id):
 	addr2 = "profile/post_status/"
 	addr = addr2 + addr1
 	return redirect("/" + addr)
+
+def alert_page(request, post_id):
+
+	jobpost = JobPost.objects.get(id = post_id)
+
+	context = { "jobpost": jobpost }
+
+	return render(request, "alert_page.html", context)
+
+def delete_post(request, post_id):
+
+	jobpost = JobPost.objects.get(id = post_id)
+
+	user_id = jobpost.user_id
 	
+	jobpost.delete()
+
+	addr1 = str(user_id)
+	addr2 = "profile/post_status/"
+	addr = addr2 + addr1
+	return redirect("/" + addr)

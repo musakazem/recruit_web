@@ -1,0 +1,25 @@
+.alert-container{
+
+	width: 500px;
+	margin: 30px auto;
+	box-shadow: 0 0 16px rgba(230, 138, 0, 1);
+	padding: 15px;
+	border-radius: 10.2px;
+}
+
+.alert-container h2{
+	text-align: center;
+	color: rgb(230, 138, 0);
+}
+
+.alert-container .delete-btn {
+
+	background-color: #f44336;
+	color: white;
+}
+
+.alert-container .delete-btn:hover {
+
+	background: #da190b;
+	color: white;
+}
