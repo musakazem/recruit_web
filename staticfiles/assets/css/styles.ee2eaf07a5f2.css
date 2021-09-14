@@ -5,8 +5,9 @@
 .col {
 }
 
-#info-form {
-  box-shadow: 0 0 16px rgb(81,203,238);
-  padding: 10px;
+#btn-container-1 {
+  text-align: center;
+  padding: 15px 0;
+  width: 1080px
 }
 

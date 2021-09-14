@@ -20,7 +20,9 @@
                 {{q_obj.question|safe}}
             </div>
             <div class="container" style="margin:40px">
+                
                 <form method="post" action="a_post" enctype="multipart/form-data" id = "answer_form">
+
                     {% csrf_token %}
                     <div name = "answer"> {{form.media}}{{form.answer}}</div>
                    

@@ -46,8 +46,9 @@ class JobPost(models.Model):
 	pay = models.IntegerField()
 	img = models.ImageField(upload_to = 'pics/', blank = True)
 	user = models.ForeignKey(User, default = 1, null = True, on_delete = models.SET_NULL)
-	desc = RichTextField(null = True, blank = True, max_length = 1000)
+	desc = RichTextField(null = True, blank = True)
 	date = models.DateTimeField(auto_now_add = True, null = True)
+	status = models.BooleanField(default=True)
 
 
 class Question(models.Model):
@@ -61,7 +62,7 @@ class Question(models.Model):
 		on_delete = models.SET_NULL)
 
 	date = models.DateTimeField(auto_now_add = True, null = True, blank = True)
-
+ 
 
 class Answer(models.Model):
 

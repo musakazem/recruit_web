@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-body a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .multisteps-form__progress {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));

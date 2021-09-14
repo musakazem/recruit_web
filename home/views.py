@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ProfileForm, AboutForm, ImageForm, JobPostForm, QuestionForm, AnswerForm
 from django.contrib import messages
 from .models import Profile, JobPost, Question
+from django.urls import reverse
 
 
 # Create your views here.
@@ -203,4 +204,51 @@ def jobinfo(request, jobpost_id):
 
 
 
+def post_status(request, user_id):
 
+	jobposts = JobPost.objects.all().order_by('-date')
+
+	user_jobposts = jobposts.filter(user_id = user_id)
+
+	context = {"jobposts" : user_jobposts}
+
+	return render(request, 'poststatus_page.html', context)
+
+def change_status_false(request, post_id):
+
+	jobposts = JobPost.objects.all()
+
+	print("*********************" + str(post_id))
+	jobpost = jobposts.get(id = post_id)
+
+	user_id = jobpost.user_id
+
+	print("*********************" + str(jobpost))
+
+	jobpost.status = False
+	jobpost.save()
+
+	addr1 = str(user_id)
+	addr2 = "profile/post_status/"
+	addr = addr2 + addr1
+	return redirect("/" + addr)
+	
+def change_status_true(request, post_id):
+
+	jobposts = JobPost.objects.all()
+
+	print("*********************" + str(post_id))
+	jobpost = jobposts.get(id = post_id)
+
+	user_id = jobpost.user_id
+
+	print("*********************" + str(jobpost))
+
+	jobpost.status = True
+	jobpost.save()
+
+	addr1 = str(user_id)
+	addr2 = "profile/post_status/"
+	addr = addr2 + addr1
+	return redirect("/" + addr)
+	

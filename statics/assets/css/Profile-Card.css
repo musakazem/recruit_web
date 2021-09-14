@@ -7,3 +7,25 @@
   border-top-right-radius: 4px;
 }
 
+#jobpost-btn {
+  border-radius: 100%;
+  background-color: transparent;
+  border-color: #184E8E;
+  color: #184E8E;
+}
+
+.profile-card {
+  background-color: #FFFFFF;
+  max-width: 1080px;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  margin-top: 15px;
+}
+
+#profile-about-container {
+  padding: 0 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  max-width: 1080px;
+  margin-top: 15px;
+}
+

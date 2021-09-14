@@ -1,14 +1,14 @@
 .header-blue {
-  background: linear-gradient(135deg, #172a74, #21a9af);
+  /*background: linear-gradient(135deg, #172a74, #21a9af);*/
   background-color: #184e8e;
-  padding-bottom: 80px;
+ /* padding-bottom: 80px;*/
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 @media (min-width:768px) {
-  .header-blue {
+  /*.header-blue {
     padding-bottom: 120px;
-  }
+  }*/
 }
 
 .header-blue .navbar {
@@ -137,12 +137,14 @@
 .header-blue .hero {
   margin-top: 20px;
   text-align: center;
+  padding-bottom: 50px
 }
 
 @media (min-width:768px) {
   .header-blue .hero {
     margin-top: 60px;
     text-align: left;
+    padding-bottom: 50px
   }
 }
 

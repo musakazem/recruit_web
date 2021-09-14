@@ -1,8 +1,9 @@
 .btn.btn-primary {
-  float: right;
+  /*float: right;*/
 }
 
-span {
-  float: right;
-}
+.jobinfo_container {
 
+	width: 100%;
+	padding: 0px 15px;
+}

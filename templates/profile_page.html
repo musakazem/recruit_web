@@ -3,8 +3,26 @@
 
     
     {% block profile_info %}
+
+     <div class="container">
+        <div id="btn-container" style="box-shadow: 0 1rem 3rem rgba(0,0,0,.175);background-color: #FFFFFF;max-width: 1080px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="btn-container-1"><button onclick="window.location.href = '/job_post'" class="btn btn-primary" data-bss-hover-animate="pulse" id="jobpost-btn" type="button">+</button>
+                        <p>Post a Job</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="btn-container-1"><button onclick="window.location.href = '/profile/post_status/{{user.id}}'" class="btn btn-primary" data-bss-hover-animate="pulse" id="checkstatus-btn" type="button" style="background-color: transparent;color: #184E8E;">more</button>
+                        <p>Check status of Jobs already posted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container profile-info">
-        <div class="text-center profile-card" style="margin: 15px;background-color: #fafafa;box-shadow: 0 0 3px #b3b3b3;">
+        <div class="text-center profile-card">
             <div class="profile-card-img" style="height:150px;background-size:cover;">
                 <a href="edit">
                 <button class="btn btn-link border-pretty" style="color: #ce9c95;float: right;border-color: rgb(24, 78, 142);color: rgb(24, 78, 142);margin: 10px;" type="button"><span>Edit&nbsp;</span><i class="icon ion-android-arrow-forward"></i></button>
@@ -35,7 +53,7 @@
         <button class="btn btn-link border-pretty" style="color: #ce9c95;float: right;border-color: rgb(24, 78, 142);color: rgb(24, 78, 142);margin: 10px;margin-right: 27px;" type="button"><span>Edit&nbsp;</span><i class="icon ion-android-arrow-forward"></i></button>
         </a>
 
-        <div style="margin: 15px;padding: 0 20px;background-color: #fafafa;box-shadow: 0 0 3px #b3b3b3;">
+        <div id = "profile-about-container">
             <h3 class="text-center">About</h3>
             <p><br><br>{{user.profileabout.about}}<br><br></p>
         </div>

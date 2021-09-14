@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+    
+    {% block jobpost_status %}
+    <div class="container">
+        <div class="applications">
+
+            {% for jobpost in jobposts %}
+
+            {% if jobpost.status == True %}
+            <div class="application" style="border-left: solid green;">
+            {% endif %}
+
+            {% if jobpost.status == False %}
+            <div class="application" style="border-left: solid orange;">
+            {% endif %}
+
+                <a href="#">{{jobpost.position}}</a>
+                <span class="date">{{jobpost.date}}</span><br>
+                <ul class="nav">
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><ion-icon style = "color: #184E8E;" size = "large" name="ellipsis-horizontal-outline"></ion-icon></a>
+                            <div class="dropdown-menu">
+                                <!-- <a class="dropdown-item" href="#">Deactivate</a><a class="dropdown-item" id="delete" href="#">Delete</a> -->
+                                
+                                {% if jobpost.status == True %}
+                                <button onclick="window.location.href = '/profile/change_status_false/{{jobpost.id}}'" type="submit" value="deactivate" name="status-btn">Deactivate</button>
+                                {% endif %}
+                                {% if jobpost.status == False %}
+                                <button onclick="
+                                window.location.href = '/profile/change_status_true/{{jobpost.id}}'" type="submit" value="activate" name="status-btn">Activate</button>
+                                {% endif %}
+                                <button id = "delete" type="submit" value="id" name="delete">Delete</button>
+                                
+                                
+                            </div>
+                        </li>
+                    </ul>
+                <br>
+                <div>
+                    <span>
+                        {% if jobpost.status == True %}
+                        <ion-icon style = "color: green" name="radio-button-on-outline"></ion-icon><p>active</p>
+                        {% endif %}
+
+                        {% if jobpost.status == False %}
+                        <ion-icon style = "color: orange" name="radio-button-on-outline"></ion-icon><p>inactive</p>
+                        {% endif %}
+                    </span>
+
+                    <span><ion-icon style = "color: grey" name="people"></ion-icon><p>12</p></span>
+
+                    <span><ion-icon style = "color: grey" name="eye"></ion-icon><p>50</p></span>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endblock %}
+    
+    
+
+

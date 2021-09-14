@@ -10,11 +10,12 @@
 		            <span style="float: left;">${{content.pay}}</span>
 		        </div>
 		        <div class="col-md-6">
-		        	<button onclick="window.location.href = '/a_post/{{content.id}}'" class="btn btn-primary" type="button">apply</button><br><br>
+		        	<button onclick="window.location.href = '/a_post/{{content.id}}'" class="btn btn-primary" type="button" style="float: right">apply</button><br><br>
 		        	<span style="float: right;">{{content.date|naturaltime}}</span>
 		        </div>
 		    <hr>
-		    <br>{{content.desc|safe}}<br><br>
+		    <br>
+		    <div class="jobinfo_container" style="padding: 0px 15px;"><hr>{{content.desc|safe}}</div><br><br>
         	</div>
         	
         </div>

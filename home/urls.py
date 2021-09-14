@@ -5,6 +5,9 @@ urlpatterns = [
 	
 	path('', views.home, name = 'home'),
 	path('profile', views.profile, name = 'profile'),
+	path('profile/post_status/<str:user_id>', views.post_status,  name = 'post_status_false'),
+	path('profile/change_status_false/<str:post_id>', views.change_status_false, name = 'change_status_false'),
+	path('profile/change_status_true/<str:post_id>', views.change_status_true, name = 'change_status_true'),
 	path('edit', views.edit_profile, name = 'edit_profile'),
 	path('edit_about', views.edit_about, name = 'edit_about'),
 	path('edit_pic', views.edit_pic, name = 'edit_pic'),
